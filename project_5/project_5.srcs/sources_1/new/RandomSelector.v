@@ -49,9 +49,9 @@ always @(clk) begin
     randomReg[0] = randomReg[31] ^ randomReg[29] ^ randomReg[25] ^ randomReg[24];
 end
 
-always @(anyInput) begin
-    //set a seed
-    randomReg[31:27] = internalClk;
-end
+//always @(anyInput) begin
+//    //set a seed
+//    randomReg[31:27] = internalClk;
+//end
     
 endmodule

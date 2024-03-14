@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
-| Date         : Thu Mar 14 05:01:47 2024
+| Date         : Thu Mar 14 07:10:19 2024
 | Host         : LAPTOP-ERO4GF0R running 64-bit major release  (build 9200)
 | Command      : report_utilization -file Top_utilization_synth.rpt -pb Top_utilization_synth.pb
 | Design       : Top
@@ -30,13 +30,13 @@ Table of Contents
 +-------------------------+------+-------+-----------+-------+
 |        Site Type        | Used | Fixed | Available | Util% |
 +-------------------------+------+-------+-----------+-------+
-| Slice LUTs*             |  369 |     0 |     20800 |  1.77 |
-|   LUT as Logic          |  369 |     0 |     20800 |  1.77 |
+| Slice LUTs*             |  375 |     0 |     20800 |  1.80 |
+|   LUT as Logic          |  375 |     0 |     20800 |  1.80 |
 |   LUT as Memory         |    0 |     0 |      9600 |  0.00 |
-| Slice Registers         |  288 |     0 |     41600 |  0.69 |
-|   Register as Flip Flop |  274 |     0 |     41600 |  0.66 |
-|   Register as Latch     |   14 |     0 |     41600 |  0.03 |
-| F7 Muxes                |    1 |     0 |     16300 | <0.01 |
+| Slice Registers         |  316 |     0 |     41600 |  0.76 |
+|   Register as Flip Flop |  316 |     0 |     41600 |  0.76 |
+|   Register as Latch     |    0 |     0 |     41600 |  0.00 |
+| F7 Muxes                |    0 |     0 |     16300 |  0.00 |
 | F8 Muxes                |    0 |     0 |      8150 |  0.00 |
 +-------------------------+------+-------+-----------+-------+
 * Warning! The Final LUT count, after physical optimizations and full implementation, is typically lower. Run opt_design after synthesis, if not already completed, for a more realistic count.
@@ -55,9 +55,9 @@ Table of Contents
 | 0     |            _ |       Reset |            - |
 | 0     |          Yes |           - |            - |
 | 0     |          Yes |           - |          Set |
-| 14    |          Yes |           - |        Reset |
+| 0     |          Yes |           - |        Reset |
 | 1     |          Yes |         Set |            - |
-| 273   |          Yes |       Reset |            - |
+| 315   |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -115,7 +115,7 @@ Table of Contents
 +------------+------+-------+-----------+-------+
 |  Site Type | Used | Fixed | Available | Util% |
 +------------+------+-------+-----------+-------+
-| BUFGCTRL   |    1 |     0 |        32 |  3.13 |
+| BUFGCTRL   |    2 |     0 |        32 |  6.25 |
 | BUFIO      |    0 |     0 |        20 |  0.00 |
 | MMCME2_ADV |    0 |     0 |         5 |  0.00 |
 | PLLE2_ADV  |    0 |     0 |         5 |  0.00 |
@@ -149,21 +149,19 @@ Table of Contents
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| FDRE     |  273 |        Flop & Latch |
-| CARRY4   |  144 |          CarryLogic |
-| LUT4     |  118 |                 LUT |
-| LUT2     |   95 |                 LUT |
-| LUT6     |   77 |                 LUT |
-| LUT3     |   69 |                 LUT |
-| LUT1     |   34 |                 LUT |
-| LUT5     |   28 |                 LUT |
+| FDRE     |  315 |        Flop & Latch |
+| CARRY4   |  159 |          CarryLogic |
+| LUT4     |  132 |                 LUT |
+| LUT2     |  102 |                 LUT |
+| LUT3     |   66 |                 LUT |
+| LUT6     |   57 |                 LUT |
+| LUT5     |   53 |                 LUT |
+| LUT1     |   32 |                 LUT |
 | OBUF     |   19 |                  IO |
-| LDCE     |   14 |        Flop & Latch |
 | OBUFT    |    8 |                  IO |
 | IBUF     |    4 |                  IO |
-| MUXF7    |    1 |               MuxFx |
+| BUFG     |    2 |               Clock |
 | FDSE     |    1 |        Flop & Latch |
-| BUFG     |    1 |               Clock |
 +----------+------+---------------------+
 
 

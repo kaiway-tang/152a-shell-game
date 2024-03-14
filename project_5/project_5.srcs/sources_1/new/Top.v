@@ -111,7 +111,7 @@ wire endCoinDrop;
 wire endAnimation;
 reg [1:0] tmp1 = 2'b11;
 reg [1:0] tmp2 = 2'b00;
-reg [24:0] frameRate = 30000000;
+reg [24:0] frameRate;
 
 DifficultyDisplay(
 .d(difficulty), .clk(clk), .segment(segment_difficulty), .index(index_difficulty)
@@ -123,81 +123,127 @@ DropCoinDisplay(
 .trigger(startCoinDrop), .cup(1), .clk(clk), .frameRate(30000000),
 .segment(segment_coinPlace), .index(index_coinPlace)
 );
+
+reg randomSelectGo;
+reg [1:0] target;
+reg [1:0] dest;
 AnimationExample(
-    .target(tmp1), .dest(tmp2), .trigger(startAnimation), .frameRate(frameRate), .msClk(clk),
-    .boardState(boardState)
+    .target(tmp1), .dest(tmp2), .trigger(startAnimation), .frameRate(frameRate), .msClk(msClk),
+    .boardState(boardState), .isInAnimation(isInAnimation)
 );
 RevealCoinDisplay(
    .submit(startCoinReveal), .guess(4'b0100), .coins(4'b1000), .msClk(clk), .segment(segment_reveal), .index(index_reveal)
 );
 
+//RandomSelector randomSelector(
+//    .go(randomSelectGo), .clk(clk), .anyInput(centerBtn || upBtn || downBtn), .swapTarget(target), .swapDest(dest)
+//);
+
 initial begin
 //0: difficulty select, 1: set bet, 2: coin place, 3: shuffling, 4: reveal animation
     gameState = 0;
+    
     balance = 10;
     bet = 5;
 end
 
-always @* begin 
-    if (gameState == 0) begin //select difficulty
-        if (centerBtn) begin
-            if (balance >= 1) begin bet = 1; end
-            if (balance >= 2) begin bet = 2; end
-            else if (balance >= 4) begin bet = 4; end        
-            gameState = 1;
-        end else if (upBtn) begin
-            difficulty = (difficulty + 1) % 4;
-        end else if (downBtn) begin
-            difficulty = difficulty - 1;
-            if (difficulty < 0) begin
-                difficulty = 3;
-            end
-        end
-    end else if (gameState == 1) begin //set bet
-        if (centerBtn) begin
-            gameState = 2;
-            startCoinDrop = 1;
-        end else if (upBtn) begin
-            if (bet * 2 <= balance) begin
-                bet = bet * 2;
-            end
-        end else if (downBtn) begin
-            if (bet > 1) begin
-                bet = bet / 2;
-            end
-        end
-    end else if (gameState == 2) begin //drop coin
-        if (centerBtn) begin
-            gameState = 3;
-            startAnimation = 1;
-            startCoinDrop = 0;
-        end
-    end else if (gameState == 3) begin //animation
-        if (centerBtn) begin
-            startAnimation = 0;
-            gameState = 4;
-        end
-    end else if (gameState == 4) begin //reveal coin
-        if (centerBtn) begin
-            gameState = 0;
-        end
-    end
-end
+reg centerBtnFlag;
+reg upBtnFlag;
+reg downBtnFlag;
+
+reg msClk;
+reg [15:0] msClkCounter;
+
+reg [5:0] numberShuffles;
+wire isInAnimation;
+reg animFlag;
 
 always @(posedge clk) begin   
     counter = counter + 1;
-end
-
-always @(posedge counter[24]) begin
-    state = state + 1;
-    if (state == 1) begin
-//        trigger = ~trigger;
-//        trigger = 1;
-    end else
-    if (state == 2) begin
-        state = 0;
+    msClkCounter = msClkCounter + 1;
+    if (msClkCounter >= 50000) begin
+        msClkCounter = 0;
+        msClk = ~msClk;
     end
+    
+    if (centerBtnFlag != centerBtn) begin
+        centerBtnFlag = centerBtn;
+        
+        if (centerBtnFlag) begin
+            if (gameState == 0) begin // Select difficulty                    
+                    if (difficulty == 0) begin
+                        frameRate = 300;
+                        numberShuffles = 8;
+                    end else
+                    if (difficulty == 1) begin
+                        frameRate = 150;
+                        numberShuffles = 16;
+                    end else
+                    if (difficulty == 2) begin
+                        frameRate = 75;
+                        numberShuffles = 32;
+                    end else
+                    if (difficulty == 3) begin
+                        frameRate = 60;
+                        numberShuffles = 40;
+                    end
+                    
+                    if (balance >= 1) begin bet = 1; end
+                    if (balance >= 2) begin bet = 2; end
+                    if (balance >= 4) begin bet = 4; end        
+                    gameState = 1;
+                end else if (gameState == 1) begin // Set bet
+                    if (bet * 2 <= balance) begin
+                        bet = bet * 2;
+                    end
+                    gameState = 2;
+                    startCoinDrop = 1;
+                end else if (gameState == 2) begin // Drop coin
+                    gameState = 3;
+                    startCoinDrop = 0;
+                    animFlag = 1;
+                    
+                    startAnimation = 1;
+                end else if (gameState == 3) begin // Animation
+                    gameState = 4;
+                end else if (gameState == 4) begin // Reveal coin
+                    gameState = 0;
+                end
+        end
+    end
+    
+    if (upBtnFlag != upBtn) begin
+        upBtnFlag = upBtn;
+        
+        if (upBtnFlag) begin
+            if (gameState == 0) begin //difficulty
+                        difficulty = (difficulty + 1) % 4;
+                    end
+                    if (gameState == 1) begin // Set bet
+                        if (bet * 2 <= balance) begin
+                            bet = bet * 2;
+                        end
+                    end
+        end         
+    end
+    
+    if (downBtnFlag != downBtn) begin
+        downBtnFlag = downBtn;
+        if (downBtnFlag) begin
+            if (gameState == 0) begin // difficulty
+                 difficulty = difficulty - 1;
+                 if (difficulty < 0) begin
+                     difficulty = 3;
+                 end
+             end else if (gameState == 1) begin // Set bet
+                 if (bet > 1) begin
+                     bet = bet / 2;
+                 end
+            end
+        end
+    end
+    
+    
 end
-
     
 endmodule
