@@ -35,6 +35,7 @@ read_verilog -library xil_defaultlib {
   C:/Users/drkiw/Documents/GitHub/152a-shell-game/project_5/project_5.srcs/sources_1/new/BetDisplay.v
   C:/Users/drkiw/Documents/GitHub/152a-shell-game/project_5/project_5.srcs/sources_1/new/CupDisplayer.v
   C:/Users/drkiw/Documents/GitHub/152a-shell-game/project_5/project_5.srcs/sources_1/new/Debouncer.v
+  C:/Users/drkiw/Documents/GitHub/152a-shell-game/project_5/project_5.srcs/sources_1/new/DifficultyDisplay.v
   C:/Users/drkiw/Documents/GitHub/152a-shell-game/project_5/project_5.srcs/sources_1/new/DisplayController.v
   C:/Users/drkiw/Documents/GitHub/152a-shell-game/project_5/project_5.srcs/sources_1/new/DropCoinDisplay.v
   C:/Users/drkiw/Documents/GitHub/152a-shell-game/project_5/project_5.srcs/sources_1/new/PModDisplay.v

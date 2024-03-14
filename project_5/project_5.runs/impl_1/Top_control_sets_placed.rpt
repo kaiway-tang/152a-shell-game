@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
-| Date         : Thu Mar 14 02:17:18 2024
+| Date         : Thu Mar 14 02:28:17 2024
 | Host         : LAPTOP-ERO4GF0R running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file Top_control_sets_placed.rpt
 | Design       : Top
@@ -23,8 +23,8 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Number of unique control sets                            |    11 |
-| Unused register locations in slices containing registers |    52 |
+| Number of unique control sets                            |     6 |
+| Unused register locations in slices containing registers |    28 |
 +----------------------------------------------------------+-------+
 
 
@@ -34,11 +34,9 @@ Table of Contents
 +--------+--------------+
 | Fanout | Control Sets |
 +--------+--------------+
-|      2 |            2 |
-|      4 |            1 |
-|      6 |            1 |
-|     12 |            3 |
-|    16+ |            4 |
+|      2 |            4 |
+|     14 |            1 |
+|    16+ |            1 |
 +--------+--------------+
 
 
@@ -48,32 +46,27 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |             262 |           37 |
+| No           | No                    | No                     |             176 |           24 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |              14 |            3 |
-| Yes          | No                    | No                     |             134 |           25 |
+| No           | Yes                   | No                     |              16 |            4 |
+| Yes          | No                    | No                     |               2 |            1 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              18 |            3 |
+| Yes          | Yes                   | No                     |               2 |            1 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 4. Detailed Control Set Information
 -----------------------------------
 
-+--------------------+---------------------------------------+--------------------------------------+------------------+----------------+
-|    Clock Signal    |             Enable Signal             |           Set/Reset Signal           | Slice Load Count | Bel Load Count |
-+--------------------+---------------------------------------+--------------------------------------+------------------+----------------+
-|  clk_IBUF_BUFG     |                                       | pmodDisplay/index[0]_i_1__0_n_0      |                1 |              2 |
-|  clk_IBUF_BUFG     | btnCDebouncer/p_0_in                  |                                      |                1 |              2 |
-|  btnCDebouncer/out |                                       |                                      |                1 |              4 |
-|  clk_IBUF_BUFG     | nolabel_line111/i2[3]_i_2_n_0         | nolabel_line120/i2_reg[1]            |                1 |              6 |
-|  clk_IBUF_BUFG     |                                       | displayController/segment[6]_i_1_n_0 |                2 |             12 |
-|  clk_IBUF_BUFG     | nolabel_line111/nextState[7]_i_1_n_0  |                                      |                5 |             12 |
-|  clk_IBUF_BUFG     | nolabel_line111/nextState[7]_i_1_n_0  | nolabel_line120/SR[0]                |                2 |             12 |
-|  clk_IBUF_BUFG     | nolabel_line111/nextState[5]_i_1_n_0  |                                      |                5 |             20 |
-|  clk_IBUF_BUFG     | nolabel_line120/isInAnimation_reg_n_0 |                                      |                7 |             50 |
-|  clk_IBUF_BUFG     | nolabel_line111/internalClk_reg[24]_0 |                                      |                7 |             50 |
-|  clk_IBUF_BUFG     |                                       |                                      |               36 |            258 |
-+--------------------+---------------------------------------+--------------------------------------+------------------+----------------+
++--------------------+----------------------+------------------------------+------------------+----------------+
+|    Clock Signal    |     Enable Signal    |       Set/Reset Signal       | Slice Load Count | Bel Load Count |
++--------------------+----------------------+------------------------------+------------------+----------------+
+|  btnCDebouncer/out |                      |                              |                1 |              2 |
+|  clk_IBUF_BUFG     |                      | pmodDisplay/index[0]_i_1_n_0 |                1 |              2 |
+|  clk_IBUF_BUFG     | betDisplay/p_0_in[0] | betDisplay/index13_out       |                1 |              2 |
+|  clk_IBUF_BUFG     | btnCDebouncer/p_0_in |                              |                1 |              2 |
+|  clk_IBUF_BUFG     |                      | gameState[0]                 |                3 |             14 |
+|  clk_IBUF_BUFG     |                      |                              |               23 |            174 |
++--------------------+----------------------+------------------------------+------------------+----------------+
 
 

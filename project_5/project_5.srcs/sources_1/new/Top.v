@@ -121,13 +121,17 @@ DropCoinDisplay(
     .trigger(trigger), .cup(1), .clk(clk), .frameRate(300000000),
     .segment(segment_coinPlace), .index(index_coinPlace)
     ); //isinanimation not used yet
+DifficultyDisplay(
+.difficulty(2), .clk(clk), .segment(segment_difficulty), .index(index_difficulty)
+);
 
 reg [35:0] counter;
 reg [9:0] state;
 reg trigger;
 
 initial begin
-    gameState = 2;
+//0: difficulty select, 1: set bet, 2: coin place, 3: shuffling, 4: reveal animation
+    gameState = 0;
 end
 
 always @(posedge centerBtn) begin
@@ -166,11 +170,6 @@ always @(posedge downBtn) begin
 end
 
 always @(posedge clk) begin   
-    
-
-    
-
-
     counter = counter + 1;
 end
 
