@@ -21,27 +21,14 @@
 
 
 module BetDisplay(
-input [6:0] currentBet,
 input clk,
-output [6:0] segment,
-output [4:0] index
+input[7:0] currBet,
+output reg [6:0] segment,
+output reg [3:0] index
 );
 
 parameter min = 1;
 parameter max = 99;
-
-always @(posedge btnU or posedge btnD) begin
-    // double the bet when btnU is pressed. can't exceed max or max - balance
-    if (btnU && (bet * 2 <= max) && (bet * 2 <= 99 - balance)) begin
-        bet <= bet * 2;
-    end
-    // halve the bet when btnD is pressed. can't fall below min
-    else if (btnD && bet > 1) begin
-        if (bet > min * 2) begin
-            bet <= bet / 2;
-        end
-    end
-end
 
 reg[24:0] slowClk;
 reg[1:0] indexed;
@@ -51,12 +38,16 @@ always @(posedge clk) begin
     indexed = slowClk[19:18]; //select which digit is displaying
 
     //display max two digits
+    //ones
     if (indexed == 2'b00 || indexed == 2'b10) begin
         index = 4'b1011;
-        segment = getSegmentEncoding(bet/10);
+//        segment = 7'b1000000;
+        segment = getSegmentEncoding(currBet%10);
     end else if (indexed == 2'b01 || indexed == 2'b11) begin
+        //tens
         index = 4'b0111;
-        segment = getSegmentEncoding(bet%10);
+//        segment = 7'b1111001;
+        segment = getSegmentEncoding(currBet/10);
     end
 
 end
@@ -74,7 +65,7 @@ function [6:0] getSegmentEncoding;
             6: getSegmentEncoding = 7'b0000010;
             7: getSegmentEncoding = 7'b1111000;
             8: getSegmentEncoding = 7'b0000000;
-            9: getSegmentEncoding = 7'b0011000;
+            9: getSegmentEncoding = 7'b0010000;
             default: getSegmentEncoding = 7'b1111111; // default to all segments off
         endcase
     end

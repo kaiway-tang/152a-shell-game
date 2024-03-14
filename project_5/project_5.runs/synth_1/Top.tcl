@@ -32,6 +32,7 @@ set_property ip_output_repo c:/Users/drkiw/Documents/GitHub/152a-shell-game/proj
 set_property ip_cache_permissions {read write} [current_project]
 read_verilog -library xil_defaultlib {
   C:/Users/drkiw/Documents/GitHub/152a-shell-game/project_5/project_5.srcs/sources_1/new/AnimationExample.v
+  C:/Users/drkiw/Documents/GitHub/152a-shell-game/project_5/project_5.srcs/sources_1/new/BetDisplay.v
   C:/Users/drkiw/Documents/GitHub/152a-shell-game/project_5/project_5.srcs/sources_1/new/CupDisplayer.v
   C:/Users/drkiw/Documents/GitHub/152a-shell-game/project_5/project_5.srcs/sources_1/new/Debouncer.v
   C:/Users/drkiw/Documents/GitHub/152a-shell-game/project_5/project_5.srcs/sources_1/new/DisplayController.v

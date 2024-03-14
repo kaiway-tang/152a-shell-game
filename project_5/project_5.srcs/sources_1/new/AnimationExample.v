@@ -51,7 +51,6 @@ always @(posedge msClk) begin
         if (internalClk >= frameRate) begin
             internalClk = internalClk - frameRate;
             
-//            nextState = ~nextState;
             // move bottom cups left
             if (frameNum > 0 && frameNum < 1 + (right - left)) begin
                 nextState[7 - (i1-1)*2 - 1] = 1;
