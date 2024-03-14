@@ -60,6 +60,7 @@ proc step_failed { step } {
   close $ch
 }
 
+set_msg_config -id {Common 17-41} -limit 10000000
 
 start_step init_design
 set ACTIVE_STEP init_design
@@ -69,12 +70,12 @@ set rc [catch {
   create_project -in_memory -part xc7a35tcpg236-1
   set_property design_mode GateLvl [current_fileset]
   set_param project.singleFileAddWarning.threshold 0
-  set_property webtalk.parent_dir C:/Users/Kai/Downloads/project_5/project_5/project_5.cache/wt [current_project]
-  set_property parent.project_path C:/Users/Kai/Downloads/project_5/project_5/project_5.xpr [current_project]
-  set_property ip_output_repo C:/Users/Kai/Downloads/project_5/project_5/project_5.cache/ip [current_project]
+  set_property webtalk.parent_dir C:/Users/drkiw/Documents/GitHub/152a-shell-game/project_5/project_5.cache/wt [current_project]
+  set_property parent.project_path C:/Users/drkiw/Documents/GitHub/152a-shell-game/project_5/project_5.xpr [current_project]
+  set_property ip_output_repo C:/Users/drkiw/Documents/GitHub/152a-shell-game/project_5/project_5.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
-  add_files -quiet C:/Users/Kai/Downloads/project_5/project_5/project_5.runs/synth_1/Top.dcp
-  read_xdc C:/Users/Kai/Downloads/project_5/project_5/project_5.srcs/constrs_1/new/Basys3Masters.xdc
+  add_files -quiet C:/Users/drkiw/Documents/GitHub/152a-shell-game/project_5/project_5.runs/synth_1/Top.dcp
+  read_xdc C:/Users/drkiw/Documents/GitHub/152a-shell-game/project_5/project_5.srcs/constrs_1/new/Basys3Masters.xdc
   link_design -top Top -part xc7a35tcpg236-1
   close_msg_db -file init_design.pb
 } RESULT]

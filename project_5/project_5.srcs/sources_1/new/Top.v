@@ -104,12 +104,12 @@ Debouncer sw3Debouncer( .btn(sw[3]), .clk(clk), .out(sw3));
 
 
 //AnimationController animationController(
-//    .target(2'b00), .dest(2'b10), .trigger(trigger), .frameRate(50000000), .msClk(clk),
+//    .target(2'b00), .dest(2'b10), .trigger(trigger), .frameRate(100000000), .msClk(clk),
 //    .boardState(boardState)
 //);
 
 AnimationExample(
-    .target(2'b00), .dest(2'b10), .trigger(trigger), .frameRate(50000000), .msClk(clk),
+    .target(2'b00), .dest(2'b10), .trigger(trigger), .frameRate(250000000), .msClk(clk),
     .boardState(boardState)
 );
 
@@ -168,7 +168,8 @@ end
 always @(posedge counter[24]) begin
     state = state + 1;
     if (state == 1) begin
-        trigger = ~trigger;
+//        trigger = ~trigger;
+        trigger = 1;
     end else
     if (state == 2) begin
         state = 0;

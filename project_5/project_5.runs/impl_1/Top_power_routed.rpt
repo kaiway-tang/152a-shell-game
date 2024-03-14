@@ -1,8 +1,8 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
-| Date             : Wed Mar 13 23:18:54 2024
-| Host             : DESKTOP-SPVCB8L running 64-bit major release  (build 9200)
+| Date             : Thu Mar 14 00:21:57 2024
+| Host             : LAPTOP-ERO4GF0R running 64-bit major release  (build 9200)
 | Command          : report_power -file Top_power_routed.rpt -pb Top_power_summary_routed.pb -rpx Top_power_routed.rpx
 | Design           : Top
 | Device           : xc7a35tcpg236-1
@@ -29,20 +29,20 @@ Table of Contents
 1. Summary
 ----------
 
-+--------------------------+----------------------------------+
-| Total On-Chip Power (W)  | 23.281 (Junction temp exceeded!) |
-| Design Power Budget (W)  | Unspecified*                     |
-| Power Budget Margin (W)  | NA                               |
-| Dynamic (W)              | 22.795                           |
-| Device Static (W)        | 0.486                            |
-| Effective TJA (C/W)      | 5.0                              |
-| Max Ambient (C)          | 0.0                              |
-| Junction Temperature (C) | 125.0                            |
-| Confidence Level         | Low                              |
-| Setting File             | ---                              |
-| Simulation Activity File | ---                              |
-| Design Nets Matched      | NA                               |
-+--------------------------+----------------------------------+
++--------------------------+--------------+
+| Total On-Chip Power (W)  | 10.322       |
+| Design Power Budget (W)  | Unspecified* |
+| Power Budget Margin (W)  | NA           |
+| Dynamic (W)              | 10.177       |
+| Device Static (W)        | 0.145        |
+| Effective TJA (C/W)      | 5.0          |
+| Max Ambient (C)          | 33.4         |
+| Junction Temperature (C) | 76.6         |
+| Confidence Level         | Low          |
+| Setting File             | ---          |
+| Simulation Activity File | ---          |
+| Design Nets Matched      | NA           |
++--------------------------+--------------+
 * Specify Design Power Budget using, set_operating_conditions -design_power_budget <value in Watts>
 
 
@@ -52,16 +52,16 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Slice Logic    |     0.751 |      235 |       --- |             --- |
-|   LUT as Logic |     0.536 |       67 |     20800 |            0.32 |
-|   CARRY4       |     0.128 |       36 |      8150 |            0.44 |
-|   Register     |     0.081 |      115 |     41600 |            0.28 |
+| Slice Logic    |     0.207 |      396 |       --- |             --- |
+|   LUT as Logic |     0.130 |      205 |     20800 |            0.99 |
+|   CARRY4       |     0.051 |       63 |      8150 |            0.77 |
+|   Register     |     0.020 |       96 |     41600 |            0.23 |
 |   BUFG         |     0.006 |        1 |        32 |            3.13 |
 |   Others       |     0.000 |        9 |       --- |             --- |
-| Signals        |     0.852 |      206 |       --- |             --- |
-| I/O            |    21.193 |       28 |       106 |           26.42 |
-| Static Power   |     0.486 |          |           |                 |
-| Total          |    23.281 |          |           |                 |
+| Signals        |     0.282 |      383 |       --- |             --- |
+| I/O            |     9.688 |       28 |       106 |           26.42 |
+| Static Power   |     0.145 |          |           |                 |
+| Total          |    10.322 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -71,16 +71,16 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     1.947 |       1.607 |      0.341 |
-| Vccaux    |       1.800 |     0.830 |       0.776 |      0.053 |
-| Vcco33    |       3.300 |     5.998 |       5.997 |      0.001 |
+| Vccint    |       1.000 |     0.562 |       0.493 |      0.069 |
+| Vccaux    |       1.800 |     0.374 |       0.355 |      0.019 |
+| Vcco33    |       3.300 |     2.742 |       2.741 |      0.001 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |
 | Vcco135   |       1.350 |     0.000 |       0.000 |      0.000 |
 | Vcco12    |       1.200 |     0.000 |       0.000 |      0.000 |
 | Vccaux_io |       1.800 |     0.000 |       0.000 |      0.000 |
-| Vccbram   |       1.000 |     0.010 |       0.000 |      0.010 |
+| Vccbram   |       1.000 |     0.002 |       0.000 |      0.002 |
 | MGTAVcc   |       1.000 |     0.000 |       0.000 |      0.000 |
 | MGTAVtt   |       1.200 |     0.000 |       0.000 |      0.000 |
 | Vccadc    |       1.800 |     0.020 |       0.000 |      0.020 |
@@ -138,10 +138,10 @@ Table of Contents
 +---------------------+-----------+
 | Name                | Power (W) |
 +---------------------+-----------+
-| Top                 |    22.795 |
-|   cupDisplayer      |     0.139 |
-|   displayController |     0.091 |
-|   nolabel_line111   |     1.097 |
+| Top                 |    10.177 |
+|   cupDisplayer      |     0.134 |
+|   displayController |     0.039 |
+|   nolabel_line111   |     0.294 |
 |   pmodDisplay       |     0.005 |
 +---------------------+-----------+
 

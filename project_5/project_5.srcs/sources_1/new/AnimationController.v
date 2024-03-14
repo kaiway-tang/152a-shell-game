@@ -30,7 +30,7 @@ output reg [7:0] boardState,
 output reg isInAnimation
     );
 
-reg[8:0] internalClk;
+reg[24:0] internalClk;
 reg[1:0] left; //internally track target and dest so left is the smaller index
 reg[1:0] right;
 reg[7:0] nextState;
@@ -39,8 +39,13 @@ reg[3:0] i2; //dumb way to track where the top cup is
 reg[5:0] frameNum; //tracks how many frames it has been (not current frame)
 reg triggerPrevState = 0; // to detect the rising edge of trigger and set left, right when first triggered
 
+initial begin 
+    nextState = 8'b01010101;
+end
 always @(posedge msClk) begin
-    if (trigger && !triggerPrevState && isInAnimation == 0) begin // just triggered, set left and right cups
+//    triggerPrevState <= trigger; // update the previous state of trigger
+//    if (trigger && !triggerPrevState && isInAnimation == 0) begin // just triggered, set left and right cups
+      if (trigger == 1) begin
         if (target < dest) begin
             left = target;
             right = dest;
@@ -51,11 +56,34 @@ always @(posedge msClk) begin
 
         //move first cup up
         nextState = 8'b01010101;
-//        nextState = 8'b00000000;
         frameNum = 1;
-        i1 = left + 1;
-        i2 = left;
+//        i1 = left + 1;
+//        i2 = left;
        
+        nextState[7-left*2] = 1; //move first cup up
+        nextState[7-left*2 - 1] = 0;
+       
+        isInAnimation = 1;
+        boardState = nextState;
+    end else if (isInAnimation == 1) begin
+        internalClk = internalClk + 1;
+
+        if (internalClk >= frameRate) begin
+            internalClk = internalClk - frameRate; // Start new frame
+           
+            boardState = nextState;
+            nextState = ~boardState;
+
+            frameNum = frameNum + 1;
+        end
+    end else begin
+        internalClk <= 0; // reset internalClk if trigger is not active
+    end
+end
+   
+endmodule
+
+
         //makes first top one light up
         //+1 is top, +0 is bottom
         //nextState[7-0] = 1;
@@ -64,22 +92,7 @@ always @(posedge msClk) begin
        
 //        nextState[7-(right*2)-1] = 1; //bottom
 //        nextState[7-(left*2)] = 1;//top
-        nextState[7-left*2] = 1; //move first cup up
-        nextState[7-left*2 - 1] = 0;
-       
-        isInAnimation = 1;
-        boardState = nextState;
-    end
-    triggerPrevState <= trigger; // update the previous state of trigger
 
-    if (isInAnimation == 1) begin
-        internalClk <= internalClk + 1;
-
-        if (internalClk >= frameRate) begin
-            internalClk = 0; // Start new frame
-           
-            boardState = nextState;
-            nextState = ~boardState;
 
 //            // move bottom cups left
 //            if (frameNum > 0 && frameNum < 1 + (right - left)) begin
@@ -98,11 +111,3 @@ always @(posedge msClk) begin
 //                frameNum = 0;
 //                isInAnimation = 0;
 //            end
-            frameNum <= frameNum + 1;
-        end
-    end else begin
-        internalClk <= 0; // reset internalClk if trigger is not active
-    end
-end
-   
-endmodule
