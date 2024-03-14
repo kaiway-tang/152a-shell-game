@@ -111,3 +111,52 @@ endmodule
 //                frameNum = 0;
 //                isInAnimation = 0;
 //            end
+
+
+//always @(posedge centerBtn) begin
+//    if (gameState == 0) begin
+//        //todo: set frame rate and number of shuffles
+//        if (balance >= 1) begin bet <= 1; end
+//        if (balance >= 2) begin bet <= 2; end
+//        if (balance >= 4) begin bet <= 4; end        
+//        gameState = 1;
+//    end else if (gameState == 1) begin
+//        //todo: trigger coin place animation (which should automatically set gameState to 2 when done)
+//        gameState = 2;
+//        startCoinDrop = 1;
+//    end else if (gameState == 2) begin
+//        //drop coin stage 
+//        gameState = 3;
+//        startAnimation = 1;
+//        startCoinDrop = 0; //reset prev stage
+//    end else if (gameState == 3) begin
+//    // shuffle
+//        startAnimation = 0; //reset prev stage
+//        gameState = 4; 
+//    end else if (gameState == 4) begin
+//    //submit bet
+////        startCoinReveal = 1;
+//        gameState = 0;
+//    end
+//end
+//always @(posedge upBtn) begin
+//    if (gameState == 0) begin //difficulty select
+//        difficulty <= (difficulty + 1) % 4;
+//    end else if (gameState == 1) begin //set bet
+//        if (bet * 2 <= balance) begin
+//            bet <= bet * 2;
+//        end
+//    end
+//end
+//always @(posedge downBtn) begin
+//    if (gameState == 0) begin //difficulty select
+//        difficulty <= difficulty - 1;
+//        if (difficulty < 0) begin
+//            difficulty <= 3;
+//        end
+//    end else if (gameState == 1) begin //set bet
+//        if (bet > 1) begin
+//            bet <= bet / 2;
+//        end
+//    end
+//end

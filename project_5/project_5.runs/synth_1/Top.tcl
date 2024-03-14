@@ -18,7 +18,6 @@ proc create_report { reportName command } {
   }
 }
 set_param xicom.use_bs_reader 1
-set_msg_config -id {Common 17-41} -limit 10000000
 create_project -in_memory -part xc7a35tcpg236-1
 
 set_param project.singleFileAddWarning.threshold 0
@@ -39,6 +38,7 @@ read_verilog -library xil_defaultlib {
   C:/Users/drkiw/Documents/GitHub/152a-shell-game/project_5/project_5.srcs/sources_1/new/DisplayController.v
   C:/Users/drkiw/Documents/GitHub/152a-shell-game/project_5/project_5.srcs/sources_1/new/DropCoinDisplay.v
   C:/Users/drkiw/Documents/GitHub/152a-shell-game/project_5/project_5.srcs/sources_1/new/PModDisplay.v
+  C:/Users/drkiw/Documents/GitHub/152a-shell-game/project_5/project_5.srcs/sources_1/new/RevealCoinDisplay.v
   C:/Users/drkiw/Documents/GitHub/152a-shell-game/project_5/project_5.srcs/sources_1/new/Top.v
 }
 # Mark all dcp files as not used in implementation to prevent them from being

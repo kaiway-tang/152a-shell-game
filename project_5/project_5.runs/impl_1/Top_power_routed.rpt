@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
-| Date             : Thu Mar 14 02:28:34 2024
+| Date             : Thu Mar 14 05:02:52 2024
 | Host             : LAPTOP-ERO4GF0R running 64-bit major release  (build 9200)
 | Command          : report_power -file Top_power_routed.rpt -pb Top_power_summary_routed.pb -rpx Top_power_routed.rpx
 | Design           : Top
@@ -29,20 +29,20 @@ Table of Contents
 1. Summary
 ----------
 
-+--------------------------+--------------+
-| Total On-Chip Power (W)  | 2.560        |
-| Design Power Budget (W)  | Unspecified* |
-| Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 2.481        |
-| Device Static (W)        | 0.078        |
-| Effective TJA (C/W)      | 5.0          |
-| Max Ambient (C)          | 72.2         |
-| Junction Temperature (C) | 37.8         |
-| Confidence Level         | Low          |
-| Setting File             | ---          |
-| Simulation Activity File | ---          |
-| Design Nets Matched      | NA           |
-+--------------------------+--------------+
++--------------------------+----------------------------------+
+| Total On-Chip Power (W)  | 15.117 (Junction temp exceeded!) |
+| Design Power Budget (W)  | Unspecified*                     |
+| Power Budget Margin (W)  | NA                               |
+| Dynamic (W)              | 14.858                           |
+| Device Static (W)        | 0.259                            |
+| Effective TJA (C/W)      | 5.0                              |
+| Max Ambient (C)          | 9.4                              |
+| Junction Temperature (C) | 100.6                            |
+| Confidence Level         | Low                              |
+| Setting File             | ---                              |
+| Simulation Activity File | ---                              |
+| Design Nets Matched      | NA                               |
++--------------------------+----------------------------------+
 * Specify Design Power Budget using, set_operating_conditions -design_power_budget <value in Watts>
 
 
@@ -52,16 +52,17 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Slice Logic    |     0.151 |      168 |       --- |             --- |
-|   CARRY4       |     0.064 |       38 |      8150 |            0.47 |
-|   LUT as Logic |     0.041 |       15 |     20800 |            0.07 |
-|   Register     |     0.040 |       98 |     41600 |            0.24 |
+| Slice Logic    |     1.378 |      880 |       --- |             --- |
+|   LUT as Logic |     0.936 |      367 |     20800 |            1.76 |
+|   CARRY4       |     0.329 |      144 |      8150 |            1.77 |
+|   Register     |     0.106 |      291 |     41600 |            0.70 |
 |   BUFG         |     0.006 |        1 |        32 |            3.13 |
-|   Others       |     0.000 |       12 |       --- |             --- |
-| Signals        |     0.341 |      155 |       --- |             --- |
-| I/O            |     1.990 |       29 |       106 |           27.36 |
-| Static Power   |     0.078 |          |           |                 |
-| Total          |     2.560 |          |           |                 |
+|   F7/F8 Muxes  |    <0.001 |        1 |     32600 |           <0.01 |
+|   Others       |     0.000 |       23 |       --- |             --- |
+| Signals        |     1.500 |      753 |       --- |             --- |
+| I/O            |    11.980 |       31 |       106 |           29.25 |
+| Static Power   |     0.259 |          |           |                 |
+| Total          |    15.117 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -71,16 +72,16 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.515 |       0.500 |      0.015 |
-| Vccaux    |       1.800 |     0.086 |       0.073 |      0.013 |
-| Vcco33    |       3.300 |     0.562 |       0.561 |      0.001 |
+| Vccint    |       1.000 |     3.054 |       2.894 |      0.161 |
+| Vccaux    |       1.800 |     0.469 |       0.438 |      0.031 |
+| Vcco33    |       3.300 |     3.387 |       3.386 |      0.001 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |
 | Vcco135   |       1.350 |     0.000 |       0.000 |      0.000 |
 | Vcco12    |       1.200 |     0.000 |       0.000 |      0.000 |
 | Vccaux_io |       1.800 |     0.000 |       0.000 |      0.000 |
-| Vccbram   |       1.000 |     0.000 |       0.000 |      0.000 |
+| Vccbram   |       1.000 |     0.004 |       0.000 |      0.004 |
 | MGTAVcc   |       1.000 |     0.000 |       0.000 |      0.000 |
 | MGTAVtt   |       1.200 |     0.000 |       0.000 |      0.000 |
 | Vccadc    |       1.800 |     0.020 |       0.000 |      0.020 |
@@ -138,12 +139,18 @@ Table of Contents
 +---------------------+-----------+
 | Name                | Power (W) |
 +---------------------+-----------+
-| Top                 |     2.481 |
-|   betDisplay        |     0.085 |
-|   btnCDebouncer     |     0.129 |
-|   displayController |     0.009 |
-|   nolabel_line124   |     0.130 |
-|   pmodDisplay       |     0.117 |
+| Top                 |    14.858 |
+|   betDisplay        |     0.158 |
+|   btnCDebouncer     |     0.141 |
+|   btnDDebouncer     |    <0.001 |
+|   btnUDebouncer     |     0.006 |
+|   cupDisplayer      |     0.123 |
+|   displayController |     0.041 |
+|   nolabel_line116   |     0.169 |
+|   nolabel_line122   |     0.859 |
+|   nolabel_line126   |     1.074 |
+|   nolabel_line130   |     0.122 |
+|   pmodDisplay       |     0.126 |
 +---------------------+-----------+
 
 

@@ -102,69 +102,84 @@ Debouncer sw1Debouncer( .btn(sw[1]), .clk(clk), .out(sw1));
 Debouncer sw2Debouncer( .btn(sw[2]), .clk(clk), .out(sw2));
 Debouncer sw3Debouncer( .btn(sw[3]), .clk(clk), .out(sw3));
 
-
-//AnimationController animationController(
-//    .target(2'b00), .dest(2'b10), .trigger(trigger), .frameRate(100000000), .msClk(clk),
-//    .boardState(boardState)
-//);
-
-AnimationExample(
-    .target(2'b11), .dest(2'b01), .trigger(trigger), .frameRate(300000000), .msClk(clk),
-    .boardState(boardState)
-);
-
-BetDisplay betDisplay(
-    .clk(clk), .currBet(99), .segment(segment_bet), .index(index_bet)
-);
-
-DropCoinDisplay(
-    .trigger(trigger), .cup(1), .clk(clk), .frameRate(300000000),
-    .segment(segment_coinPlace), .index(index_coinPlace)
-    ); //isinanimation not used yet
-DifficultyDisplay(
-.difficulty(2), .clk(clk), .segment(segment_difficulty), .index(index_difficulty)
-);
-
 reg [35:0] counter;
 reg [9:0] state;
-reg trigger;
+reg startCoinDrop;
+reg startAnimation;
+reg startCoinReveal;
+wire endCoinDrop;
+wire endAnimation;
+reg [1:0] tmp1 = 2'b11;
+reg [1:0] tmp2 = 2'b00;
+reg [24:0] frameRate = 30000000;
+
+DifficultyDisplay(
+.d(difficulty), .clk(clk), .segment(segment_difficulty), .index(index_difficulty)
+);
+BetDisplay betDisplay(
+    .clk(clk), .currBet(bet), .segment(segment_bet), .index(index_bet)
+);
+DropCoinDisplay(
+.trigger(startCoinDrop), .cup(1), .clk(clk), .frameRate(30000000),
+.segment(segment_coinPlace), .index(index_coinPlace)
+);
+AnimationExample(
+    .target(tmp1), .dest(tmp2), .trigger(startAnimation), .frameRate(frameRate), .msClk(clk),
+    .boardState(boardState)
+);
+RevealCoinDisplay(
+   .submit(startCoinReveal), .guess(4'b0100), .coins(4'b1000), .msClk(clk), .segment(segment_reveal), .index(index_reveal)
+);
 
 initial begin
 //0: difficulty select, 1: set bet, 2: coin place, 3: shuffling, 4: reveal animation
     gameState = 0;
+    balance = 10;
+    bet = 5;
 end
 
-always @(posedge centerBtn) begin
-    if (gameState == 0) begin
-        //todo: set frame rate and number of shuffles
-        if (balance >= 1) begin bet = 1; end
-        if (balance >= 2) begin bet = 2; end
-        if (balance >= 4) begin bet = 4; end        
-        gameState = 1;
-    end else if (gameState == 1) begin
-        //todo: trigger coin place animation (which should automatically set gameState to 2 when done)
-    end else if (gameState == 2) begin
-        //trigger shuffling sequence
-    end
-end
-always @(posedge upBtn) begin
-    if (gameState == 0) begin //difficulty select
-        difficulty = (difficulty + 1) % 4;
-    end else if (gameState == 1) begin //set bet
-        if (bet * 2 <= balance) begin
-            bet = bet * 2;
-        end
-    end
-end
-always @(posedge downBtn) begin
-    if (gameState == 0) begin //difficulty select
-        difficulty = difficulty - 1;
-        if (difficulty < 0) begin
-            difficulty = difficulty + 4;
+always @* begin 
+    if (gameState == 0) begin //select difficulty
+        if (centerBtn) begin
+            if (balance >= 1) begin bet = 1; end
+            if (balance >= 2) begin bet = 2; end
+            else if (balance >= 4) begin bet = 4; end        
+            gameState = 1;
+        end else if (upBtn) begin
+            difficulty = (difficulty + 1) % 4;
+        end else if (downBtn) begin
+            difficulty = difficulty - 1;
+            if (difficulty < 0) begin
+                difficulty = 3;
+            end
         end
     end else if (gameState == 1) begin //set bet
-        if (bet > 1) begin
-            bet = bet / 2;
+        if (centerBtn) begin
+            gameState = 2;
+            startCoinDrop = 1;
+        end else if (upBtn) begin
+            if (bet * 2 <= balance) begin
+                bet = bet * 2;
+            end
+        end else if (downBtn) begin
+            if (bet > 1) begin
+                bet = bet / 2;
+            end
+        end
+    end else if (gameState == 2) begin //drop coin
+        if (centerBtn) begin
+            gameState = 3;
+            startAnimation = 1;
+            startCoinDrop = 0;
+        end
+    end else if (gameState == 3) begin //animation
+        if (centerBtn) begin
+            startAnimation = 0;
+            gameState = 4;
+        end
+    end else if (gameState == 4) begin //reveal coin
+        if (centerBtn) begin
+            gameState = 0;
         end
     end
 end
@@ -177,7 +192,7 @@ always @(posedge counter[24]) begin
     state = state + 1;
     if (state == 1) begin
 //        trigger = ~trigger;
-        trigger = 1;
+//        trigger = 1;
     end else
     if (state == 2) begin
         state = 0;

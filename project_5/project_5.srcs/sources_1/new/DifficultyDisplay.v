@@ -21,7 +21,7 @@
 
 
 module DifficultyDisplay(
-input[1:0] difficulty, //0-3 = easy, ehh, hard, bruh
+input[1:0] d, //0-3 = easy, ehh, hard, bruh
 input clk,
 output reg [6:0] segment,
 output reg [3:0] index
@@ -35,7 +35,7 @@ always @(posedge clk) begin
     slowClk = slowClk + 1;
     indexed = slowClk[19:18];
     
-    if (difficulty == 2'b00) begin
+    if (d == 2'b00) begin
     //easy
         if (indexed == 2'b00) begin
             index = 4'b0111;
@@ -51,7 +51,7 @@ always @(posedge clk) begin
             segment = 7'b0010001;
         end
 
-    end else if (difficulty == 2'b01) begin 
+    end else if (d == 2'b01) begin 
     //ehhh
         if (indexed == 2'b00) begin
             index = 4'b0111;
@@ -67,7 +67,7 @@ always @(posedge clk) begin
             segment = 7'b0001011;
         end
 
-    end else if (difficulty == 2'b10) begin 
+    end else if (d == 2'b10) begin 
     //hard
         if (indexed == 2'b00) begin
             index = 4'b0111;
@@ -83,7 +83,7 @@ always @(posedge clk) begin
             segment = 7'b0100001;
         end
 
-    end else if (difficulty == 2'b11) begin 
+    end else if (d == 2'b11) begin 
     //bruh
         if (indexed == 2'b00) begin
             index = 4'b0111;
