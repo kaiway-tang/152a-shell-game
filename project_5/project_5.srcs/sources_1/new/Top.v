@@ -117,12 +117,17 @@ BetDisplay betDisplay(
     .clk(clk), .currBet(99), .segment(segment_bet), .index(index_bet)
 );
 
+DropCoinDisplay(
+    .trigger(trigger), .cup(1), .clk(clk), .frameRate(300000000),
+    .segment(segment_coinPlace), .index(index_coinPlace)
+    ); //isinanimation not used yet
+
 reg [35:0] counter;
 reg [9:0] state;
 reg trigger;
 
 initial begin
-    gameState = 1;
+    gameState = 2;
 end
 
 always @(posedge centerBtn) begin
@@ -172,8 +177,8 @@ end
 always @(posedge counter[24]) begin
     state = state + 1;
     if (state == 1) begin
-        trigger = ~trigger;
-//        trigger = 1;
+//        trigger = ~trigger;
+        trigger = 1;
     end else
     if (state == 2) begin
         state = 0;

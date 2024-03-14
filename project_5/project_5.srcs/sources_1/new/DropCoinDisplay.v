@@ -32,7 +32,7 @@ output reg isInAnimation
 
 reg [24:0] internalClk;
 reg [24:0] slowClk; //
-reg[1:0] frameNum; //4 frames total
+reg[2:0] frameNum;
 reg triggerPrevState = 0; // to detect the rising edge of trigger and set left, right when first triggered
 reg[1:0] indexed;
 
