@@ -109,7 +109,7 @@ Debouncer sw3Debouncer( .btn(sw[3]), .clk(clk), .out(sw3));
 //);
 
 AnimationExample(
-    .target(2'b00), .dest(2'b10), .trigger(trigger), .frameRate(250000000), .msClk(clk),
+    .target(2'b11), .dest(2'b01), .trigger(trigger), .frameRate(300000000), .msClk(clk),
     .boardState(boardState)
 );
 

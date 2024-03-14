@@ -53,12 +53,12 @@ always @(posedge msClk) begin
             
 //            nextState = ~nextState;
             // move bottom cups left
-            if (frameNum > 0 && frameNum <= 1 + (right - left)) begin
+            if (frameNum > 0 && frameNum < 1 + (right - left)) begin
                 nextState[7 - (i1-1)*2 - 1] = 1;
                 nextState[7- i1*2 -1] = 0;
                 i1 = i1 + 1;
             //move top cup right
-            end else if (frameNum <= 1 + 2 * (right - left)) begin
+            end else if (frameNum < 1 + 2 * (right - left)) begin
                 nextState[7-(i2 + 1)*2] = 1;
                 nextState[7-i2*2] = 0;
                 i2 = i2 + 1;
@@ -84,10 +84,13 @@ always @(posedge msClk) begin
             right = target;
         end
         frameNum = 1;
-        
+        i1 = left + 1;
+        i2 = left;
+
         //move first cup up
         nextState[7-left*2] = 1; //move first cup up
         nextState[7-left*2 - 1] = 0;
+        
         boardState = nextState;
     end
 end

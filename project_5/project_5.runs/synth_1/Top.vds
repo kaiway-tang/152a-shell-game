@@ -2,8 +2,8 @@
 # Vivado v2018.2 (64-bit)
 # SW Build 2258646 on Thu Jun 14 20:03:12 MDT 2018
 # IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
-# Start of session at: Thu Mar 14 00:20:47 2024
-# Process ID: 4904
+# Start of session at: Thu Mar 14 00:40:45 2024
+# Process ID: 12416
 # Current directory: C:/Users/drkiw/Documents/GitHub/152a-shell-game/project_5/project_5.runs/synth_1
 # Command line: vivado.exe -log Top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Top.tcl
 # Log file: C:/Users/drkiw/Documents/GitHub/152a-shell-game/project_5/project_5.runs/synth_1/Top.vds
@@ -15,10 +15,10 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 20932 
+INFO: Helper process launched with PID 21356 
 WARNING: [Synth 8-992] trigger is already implicitly declared earlier [C:/Users/drkiw/Documents/GitHub/152a-shell-game/project_5/project_5.srcs/sources_1/new/Top.v:118]
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:01 ; elapsed = 00:00:02 . Memory (MB): peak = 421.281 ; gain = 109.262
+Starting RTL Elaboration : Time (s): cpu = 00:00:01 ; elapsed = 00:00:02 . Memory (MB): peak = 421.363 ; gain = 108.023
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'Top' [C:/Users/drkiw/Documents/GitHub/152a-shell-game/project_5/project_5.srcs/sources_1/new/Top.v:23]
 INFO: [Synth 8-6157] synthesizing module 'CupDisplayer' [C:/Users/drkiw/Documents/GitHub/152a-shell-game/project_5/project_5.srcs/sources_1/new/CupDisplayer.v:23]
@@ -55,7 +55,7 @@ WARNING: [Synth 8-3331] design Top has unconnected port pmodC[2]
 WARNING: [Synth 8-3331] design Top has unconnected port pmodC[1]
 WARNING: [Synth 8-3331] design Top has unconnected port pmodC[0]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:01 ; elapsed = 00:00:02 . Memory (MB): peak = 455.574 ; gain = 143.555
+Finished RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 456.070 ; gain = 142.730
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -119,10 +119,10 @@ WARNING: [Synth 8-3295] tying undriven pin pmodDisplay:balance[0] to constant 0 
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:01 ; elapsed = 00:00:02 . Memory (MB): peak = 455.574 ; gain = 143.555
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 456.070 ; gain = 142.730
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:01 ; elapsed = 00:00:02 . Memory (MB): peak = 455.574 ; gain = 143.555
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 456.070 ; gain = 142.730
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -140,26 +140,26 @@ Completed Processing XDC Constraints
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 793.250 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 793.074 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:06 ; elapsed = 00:00:09 . Memory (MB): peak = 793.250 ; gain = 481.230
+Finished Constraint Validation : Time (s): cpu = 00:00:06 ; elapsed = 00:00:09 . Memory (MB): peak = 793.074 ; gain = 479.734
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:06 ; elapsed = 00:00:09 . Memory (MB): peak = 793.250 ; gain = 481.230
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:06 ; elapsed = 00:00:09 . Memory (MB): peak = 793.074 ; gain = 479.734
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:06 ; elapsed = 00:00:09 . Memory (MB): peak = 793.250 ; gain = 481.230
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:06 ; elapsed = 00:00:09 . Memory (MB): peak = 793.074 ; gain = 479.734
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5544] ROM "gameState" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:09 . Memory (MB): peak = 793.250 ; gain = 481.230
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:09 . Memory (MB): peak = 793.074 ; gain = 479.734
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -172,6 +172,7 @@ Start RTL Component Statistics
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Adders : 
+	   3 Input     33 Bit       Adders := 2     
 	   3 Input     32 Bit       Adders := 2     
 	   2 Input     32 Bit       Adders := 3     
 	   2 Input     25 Bit       Adders := 3     
@@ -179,14 +180,14 @@ Detailed RTL Component Info :
 	   2 Input     16 Bit       Adders := 7     
 	   2 Input     10 Bit       Adders := 2     
 	   2 Input      6 Bit       Adders := 1     
-	   2 Input      4 Bit       Adders := 4     
-	   2 Input      3 Bit       Adders := 2     
+	   2 Input      4 Bit       Adders := 3     
+	   2 Input      3 Bit       Adders := 3     
 +---Registers : 
 	               10 Bit    Registers := 1     
 	                8 Bit    Registers := 2     
 	                7 Bit    Registers := 2     
 	                6 Bit    Registers := 1     
-	                4 Bit    Registers := 8     
+	                4 Bit    Registers := 7     
 	                3 Bit    Registers := 1     
 	                2 Bit    Registers := 5     
 	                1 Bit    Registers := 10    
@@ -195,12 +196,13 @@ Detailed RTL Component Info :
 	   4 Input      7 Bit        Muxes := 1     
 	   2 Input      6 Bit        Muxes := 2     
 	   4 Input      4 Bit        Muxes := 1     
-	   2 Input      4 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 4     
+	   3 Input      4 Bit        Muxes := 1     
 	   2 Input      2 Bit        Muxes := 4     
 	   4 Input      2 Bit        Muxes := 2     
 	   4 Input      1 Bit        Muxes := 1     
 	   6 Input      1 Bit        Muxes := 1     
-	   2 Input      1 Bit        Muxes := 3     
+	   2 Input      1 Bit        Muxes := 5     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -257,24 +259,27 @@ Detailed RTL Component Info :
 Module AnimationExample 
 Detailed RTL Component Info : 
 +---Adders : 
+	   3 Input     33 Bit       Adders := 2     
 	   3 Input     32 Bit       Adders := 2     
 	   2 Input     32 Bit       Adders := 3     
 	   3 Input     25 Bit       Adders := 1     
 	   2 Input     25 Bit       Adders := 1     
 	   2 Input      6 Bit       Adders := 1     
-	   2 Input      4 Bit       Adders := 4     
-	   2 Input      3 Bit       Adders := 2     
+	   2 Input      4 Bit       Adders := 3     
+	   2 Input      3 Bit       Adders := 3     
 +---Registers : 
 	                8 Bit    Registers := 2     
 	                6 Bit    Registers := 1     
-	                4 Bit    Registers := 5     
+	                4 Bit    Registers := 4     
 	                2 Bit    Registers := 3     
 	                1 Bit    Registers := 2     
 +---Muxes : 
 	   2 Input      8 Bit        Muxes := 7     
 	   2 Input      6 Bit        Muxes := 2     
+	   3 Input      4 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 3     
 	   2 Input      2 Bit        Muxes := 2     
-	   2 Input      1 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 4     
 ---------------------------------------------------------------------------------
 Finished RTL Hierarchical Component Statistics
 ---------------------------------------------------------------------------------
@@ -293,8 +298,6 @@ Start Cross Boundary and Area Optimization
 Warning: Parallel synthesis criteria is not met 
 INFO: [Synth 8-4471] merging register 'nolabel_line111/right_reg[1:0]' into 'nolabel_line111/right_reg[1:0]' [C:/Users/drkiw/Documents/GitHub/152a-shell-game/project_5/project_5.srcs/sources_1/new/AnimationExample.v:56]
 INFO: [Synth 8-4471] merging register 'nolabel_line111/i2_reg[3:0]' into 'nolabel_line111/i2_reg[3:0]' [C:/Users/drkiw/Documents/GitHub/152a-shell-game/project_5/project_5.srcs/sources_1/new/AnimationExample.v:62]
-INFO: [Synth 8-4471] merging register 'nolabel_line111/i1_reg[3:0]' into 'nolabel_line111/i1_reg[3:0]' [C:/Users/drkiw/Documents/GitHub/152a-shell-game/project_5/project_5.srcs/sources_1/new/AnimationExample.v:57]
-INFO: [Synth 8-4471] merging register 'nolabel_line111/i2_reg[3:0]' into 'nolabel_line111/i2_reg[3:0]' [C:/Users/drkiw/Documents/GitHub/152a-shell-game/project_5/project_5.srcs/sources_1/new/AnimationExample.v:62]
 WARNING: [Synth 8-6014] Unused sequential element btnUDebouncer/out_reg was removed.  [C:/Users/drkiw/Documents/GitHub/152a-shell-game/project_5/project_5.srcs/sources_1/new/Debouncer.v:34]
 WARNING: [Synth 8-6014] Unused sequential element btnDDebouncer/out_reg was removed.  [C:/Users/drkiw/Documents/GitHub/152a-shell-game/project_5/project_5.srcs/sources_1/new/Debouncer.v:34]
 WARNING: [Synth 8-6014] Unused sequential element sw0Debouncer/out_reg was removed.  [C:/Users/drkiw/Documents/GitHub/152a-shell-game/project_5/project_5.srcs/sources_1/new/Debouncer.v:34]
@@ -302,7 +305,6 @@ WARNING: [Synth 8-6014] Unused sequential element sw1Debouncer/out_reg was remov
 WARNING: [Synth 8-6014] Unused sequential element sw2Debouncer/out_reg was removed.  [C:/Users/drkiw/Documents/GitHub/152a-shell-game/project_5/project_5.srcs/sources_1/new/Debouncer.v:34]
 WARNING: [Synth 8-6014] Unused sequential element sw3Debouncer/out_reg was removed.  [C:/Users/drkiw/Documents/GitHub/152a-shell-game/project_5/project_5.srcs/sources_1/new/Debouncer.v:34]
 WARNING: [Synth 8-6014] Unused sequential element nolabel_line111/right_reg was removed.  [C:/Users/drkiw/Documents/GitHub/152a-shell-game/project_5/project_5.srcs/sources_1/new/AnimationExample.v:56]
-WARNING: [Synth 8-6014] Unused sequential element nolabel_line111/i1_reg was removed.  [C:/Users/drkiw/Documents/GitHub/152a-shell-game/project_5/project_5.srcs/sources_1/new/AnimationExample.v:57]
 WARNING: [Synth 8-6014] Unused sequential element nolabel_line111/i2_reg was removed.  [C:/Users/drkiw/Documents/GitHub/152a-shell-game/project_5/project_5.srcs/sources_1/new/AnimationExample.v:62]
 WARNING: [Synth 8-3331] design Top has unconnected port pmod[7]
 WARNING: [Synth 8-3331] design Top has unconnected port pmod[2]
@@ -318,8 +320,8 @@ WARNING: [Synth 8-3331] design Top has unconnected port sw[3]
 WARNING: [Synth 8-3331] design Top has unconnected port sw[2]
 WARNING: [Synth 8-3331] design Top has unconnected port sw[1]
 WARNING: [Synth 8-3331] design Top has unconnected port sw[0]
-INFO: [Synth 8-3886] merging instance 'nolabel_line111/left_reg[0]' (FDE) to 'nolabel_line111/left_reg[1]'
-INFO: [Synth 8-3886] merging instance 'nolabel_line111/right_reg[0]' (FDE) to 'nolabel_line111/left_reg[1]'
+INFO: [Synth 8-3886] merging instance 'nolabel_line111/left_reg[0]' (FDE) to 'nolabel_line111/right_reg[1]'
+INFO: [Synth 8-3886] merging instance 'nolabel_line111/right_reg[0]' (FDE) to 'nolabel_line111/right_reg[1]'
 INFO: [Synth 8-3333] propagating constant 1 across sequential element (\nolabel_line111/right_reg[1] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (\nolabel_line111/left_reg[1] )
 INFO: [Synth 8-3333] propagating constant 1 across sequential element (trigger_reg)
@@ -344,10 +346,10 @@ WARNING: [Synth 8-3332] Sequential element (cupDisplayer/segment_reg[0]) is unus
 WARNING: [Synth 8-3332] Sequential element (pmodDisplay/value_reg[3]) is unused and will be removed from module Top.
 WARNING: [Synth 8-3332] Sequential element (pmodDisplay/index_reg[1]) is unused and will be removed from module Top.
 WARNING: [Synth 8-3332] Sequential element (trigger_reg) is unused and will be removed from module Top.
-WARNING: [Synth 8-3332] Sequential element (nolabel_line111/right_reg[1]) is unused and will be removed from module Top.
 WARNING: [Synth 8-3332] Sequential element (nolabel_line111/left_reg[1]) is unused and will be removed from module Top.
+WARNING: [Synth 8-3332] Sequential element (nolabel_line111/right_reg[1]) is unused and will be removed from module Top.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:06 ; elapsed = 00:00:10 . Memory (MB): peak = 793.250 ; gain = 481.230
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:07 ; elapsed = 00:00:10 . Memory (MB): peak = 793.074 ; gain = 479.734
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -359,13 +361,13 @@ Report RTL Partitions:
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:16 . Memory (MB): peak = 793.250 ; gain = 481.230
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:16 . Memory (MB): peak = 793.074 ; gain = 479.734
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:11 ; elapsed = 00:00:16 . Memory (MB): peak = 793.250 ; gain = 481.230
+Finished Timing Optimization : Time (s): cpu = 00:00:11 ; elapsed = 00:00:16 . Memory (MB): peak = 793.074 ; gain = 479.734
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -378,10 +380,13 @@ Start Technology Mapping
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-3332] Sequential element (btnCDebouncer/out_reg) is unused and will be removed from module Top.
 WARNING: [Synth 8-3332] Sequential element (gameState_reg[1]) is unused and will be removed from module Top.
+INFO: [Synth 8-3886] merging instance 'nolabel_line111/i2_reg[3]__0' (FDRE) to 'nolabel_line111/i2_reg[3]'
+INFO: [Synth 8-3886] merging instance 'nolabel_line111/i2_reg[1]__0' (FDRE) to 'nolabel_line111/i2_reg[1]'
+INFO: [Synth 8-3886] merging instance 'nolabel_line111/i2_reg[2]__0' (FDRE) to 'nolabel_line111/i2_reg[2]'
 INFO: [Synth 8-3333] propagating constant 1 across sequential element (\displayController/segment_reg[0] )
 WARNING: [Synth 8-3332] Sequential element (displayController/segment_reg[0]) is unused and will be removed from module Top.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:11 ; elapsed = 00:00:16 . Memory (MB): peak = 808.133 ; gain = 496.113
+Finished Technology Mapping : Time (s): cpu = 00:00:11 ; elapsed = 00:00:16 . Memory (MB): peak = 810.910 ; gain = 497.570
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -405,7 +410,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:11 ; elapsed = 00:00:17 . Memory (MB): peak = 808.133 ; gain = 496.113
+Finished IO Insertion : Time (s): cpu = 00:00:12 ; elapsed = 00:00:17 . Memory (MB): peak = 810.910 ; gain = 497.570
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -418,7 +423,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:11 ; elapsed = 00:00:17 . Memory (MB): peak = 808.133 ; gain = 496.113
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:12 ; elapsed = 00:00:17 . Memory (MB): peak = 810.910 ; gain = 497.570
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -430,25 +435,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:11 ; elapsed = 00:00:17 . Memory (MB): peak = 808.133 ; gain = 496.113
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:12 ; elapsed = 00:00:17 . Memory (MB): peak = 810.910 ; gain = 497.570
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:11 ; elapsed = 00:00:17 . Memory (MB): peak = 808.133 ; gain = 496.113
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:12 ; elapsed = 00:00:17 . Memory (MB): peak = 810.910 ; gain = 497.570
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:11 ; elapsed = 00:00:17 . Memory (MB): peak = 808.133 ; gain = 496.113
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:12 ; elapsed = 00:00:17 . Memory (MB): peak = 810.910 ; gain = 497.570
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:11 ; elapsed = 00:00:17 . Memory (MB): peak = 808.133 ; gain = 496.113
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:12 ; elapsed = 00:00:17 . Memory (MB): peak = 810.910 ; gain = 497.570
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -465,14 +470,14 @@ Report Cell Usage:
 |      |Cell   |Count |
 +------+-------+------+
 |1     |BUFG   |     1|
-|2     |CARRY4 |    63|
-|3     |LUT1   |    18|
-|4     |LUT2   |    22|
-|5     |LUT3   |    32|
-|6     |LUT4   |   108|
-|7     |LUT5   |    28|
-|8     |LUT6   |    20|
-|9     |FDRE   |    91|
+|2     |CARRY4 |    65|
+|3     |LUT1   |    26|
+|4     |LUT2   |    15|
+|5     |LUT3   |    30|
+|6     |LUT4   |   106|
+|7     |LUT5   |    32|
+|8     |LUT6   |    24|
+|9     |FDRE   |    92|
 |10    |FDSE   |     1|
 |11    |IBUF   |     1|
 |12    |OBUF   |    19|
@@ -483,20 +488,20 @@ Report Instance Areas:
 +------+--------------------+------------------+------+
 |      |Instance            |Module            |Cells |
 +------+--------------------+------------------+------+
-|1     |top                 |                  |   412|
+|1     |top                 |                  |   420|
 |2     |  cupDisplayer      |CupDisplayer      |    44|
 |3     |  displayController |DisplayController |     6|
-|4     |  nolabel_line111   |AnimationExample  |   332|
+|4     |  nolabel_line111   |AnimationExample  |   340|
 |5     |  pmodDisplay       |PModDisplay       |     1|
 +------+--------------------+------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:11 ; elapsed = 00:00:17 . Memory (MB): peak = 808.133 ; gain = 496.113
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:12 ; elapsed = 00:00:17 . Memory (MB): peak = 810.910 ; gain = 497.570
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 34 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:07 ; elapsed = 00:00:12 . Memory (MB): peak = 808.133 ; gain = 158.438
-Synthesis Optimization Complete : Time (s): cpu = 00:00:11 ; elapsed = 00:00:17 . Memory (MB): peak = 808.133 ; gain = 496.113
+Synthesis finished with 0 errors, 0 critical warnings and 33 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:07 ; elapsed = 00:00:12 . Memory (MB): peak = 810.910 ; gain = 160.566
+Synthesis Optimization Complete : Time (s): cpu = 00:00:12 ; elapsed = 00:00:17 . Memory (MB): peak = 810.910 ; gain = 497.570
 INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Netlist 29-17] Analyzing 64 Unisim elements for replacement
+INFO: [Netlist 29-17] Analyzing 66 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
@@ -504,11 +509,11 @@ INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 INFO: [Common 17-83] Releasing license: Synthesis
-50 Infos, 108 Warnings, 2 Critical Warnings and 0 Errors encountered.
+51 Infos, 107 Warnings, 2 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:13 ; elapsed = 00:00:19 . Memory (MB): peak = 808.133 ; gain = 509.148
+synth_design: Time (s): cpu = 00:00:12 ; elapsed = 00:00:19 . Memory (MB): peak = 811.055 ; gain = 510.766
 WARNING: [Constraints 18-5210] No constraint will be written out.
 INFO: [Common 17-1381] The checkpoint 'C:/Users/drkiw/Documents/GitHub/152a-shell-game/project_5/project_5.runs/synth_1/Top.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file Top_utilization_synth.rpt -pb Top_utilization_synth.pb
-report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.015 . Memory (MB): peak = 808.133 ; gain = 0.000
-INFO: [Common 17-206] Exiting Vivado at Thu Mar 14 00:21:09 2024...
+report_utilization: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.016 . Memory (MB): peak = 811.055 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Thu Mar 14 00:41:07 2024...
